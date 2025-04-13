@@ -584,7 +584,7 @@ class SparkExpectationsActions:
                 and _context.get_agg_dq_detailed_stats_status is True
                 and _source_dq_enabled
             ):
-                _log.info("IN THE CHECK =>" + str(_agg_query_dq_results))
+                _log.info("1 IN THE CHECK =>" + str(_agg_query_dq_results))
                 _context.set_source_agg_dq_detailed_stats(_agg_query_dq_results)
 
             elif (
@@ -592,6 +592,7 @@ class SparkExpectationsActions:
                 and _context.get_agg_dq_detailed_stats_status is True
                 and _target_dq_enabled
             ):
+                _log.info("2 IN THE CHECK =>" + str(_agg_query_dq_results))
                 _context.set_target_agg_dq_detailed_stats(_agg_query_dq_results)
 
             elif (
@@ -599,6 +600,8 @@ class SparkExpectationsActions:
                 and _context.get_query_dq_detailed_stats_status is True
                 and _source_dq_enabled
             ):
+                _log.info("3 IN THE CHECK =>" + str(_agg_query_dq_results))
+                _log.info("3 IN THE CHECK =>" + str(_querydq_output_list))
                 _context.set_source_query_dq_detailed_stats(_agg_query_dq_results)
 
                 _context.set_source_query_dq_output(_querydq_output_list)
@@ -608,9 +611,14 @@ class SparkExpectationsActions:
                 and _context.get_query_dq_detailed_stats_status is True
                 and _target_dq_enabled
             ):
+                _log.info("4 IN THE CHECK =>" + str(_agg_query_dq_results))
+                _log.info("4 IN THE CHECK =>" + str(_querydq_output_list))
                 _context.set_target_query_dq_detailed_stats(_agg_query_dq_results)
 
                 _context.set_target_query_dq_output(_querydq_output_list)
+
+            else:
+                _log.info("5 IN THE CHECK =>" + str(_agg_query_dq_results))
 
             _log.info("$$$CONDITION_EXPRESSIONS$$$")
             _log.info(str(condition_expressions))
