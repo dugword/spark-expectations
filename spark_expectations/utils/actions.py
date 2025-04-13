@@ -635,7 +635,9 @@ class SparkExpectationsActions:
                         ]
                     )
 
+                    _log.info("####THIS IS THE RETURNED DATA FRAME####")
                     _context.print_dataframe_with_debugger(df)
+                    _log.info("###################")
 
                 elif rule_type == _context.get_row_dq_rule_type_name:
                     df = df.select(col("*"), *condition_expressions)
@@ -646,8 +648,8 @@ class SparkExpectationsActions:
                     f"at {f'final_{rule_type}' if _source_dq_enabled else f'final_{rule_type}' }"
                     f", please configure rules or avoid this error by setting final_{rule_type} to False"
                 )
-
             return df
+            
 
         except Exception as e:
             raise SparkExpectationsMiscException(
