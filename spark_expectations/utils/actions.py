@@ -14,6 +14,7 @@ from pyspark.sql.functions import (
     struct,
     when,
 )
+from spark_expectations import _log
 
 from spark_expectations.config.user_config import Constants as constant_config
 from spark_expectations.core.context import SparkExpectationsContext
@@ -460,7 +461,7 @@ class SparkExpectationsActions:
 
 
         """
-        print("THIS IS SOME OUTPUT - LOOK AT ME!")
+        _log.info("THIS IS SOME OUTPUT - LOOK AT ME!")
         try:
             first_row = _df.first()
             if (

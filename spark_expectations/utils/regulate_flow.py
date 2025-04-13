@@ -140,6 +140,8 @@ class SparkExpectationsRegulateFlow:
                 elif final_agg_dq_flag:
                     _context.set_final_agg_dq_result(agg_dq_res)
                 elif source_query_dq_flag:
+                    _log.info("LOOK AT THIS - IT'S A LOG")
+                    _log.info("DATA =>" + str(agg_dq_res))
                     _context.set_source_query_dq_result(agg_dq_res)
                 elif final_query_dq_flag:
                     _context.set_final_query_dq_result(agg_dq_res)
