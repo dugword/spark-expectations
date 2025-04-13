@@ -630,11 +630,14 @@ class SparkExpectationsActions:
                     _context.get_query_dq_rule_type_name,
                     _context.get_agg_dq_rule_type_name,
                 ]:
-                    df = (
-                        df
-                        if rule_type == _context.get_agg_dq_rule_type_name
-                        else _context.get_supported_df_query_dq
-                    )
+                    
+                    if rule_type == _context.get_agg_dq_rule_type_name:
+                        _log.info("( o )( o ) when setting DF if is TRUE")
+                        df = df
+                    else:
+                        _log.info("( o )( o ) when setting DF if is FALSE")
+                        df = _context.get_supported_df_query_dq
+
                     _log.info("@@@LOOK IT'S A DATA FRAME@@@")
                     _context.print_dataframe_with_debugger(df)
                     _log.info("@@@@@@")
