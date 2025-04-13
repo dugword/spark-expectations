@@ -607,7 +607,12 @@ class SparkExpectationsActions:
 
                 _context.set_target_query_dq_output(_querydq_output_list)
 
+            _log.info("$$$CONDITION_EXPRESSIONS$$$")
+            _log.info(str(condition_expressions))
+            _log.info("$$$$$$")
             if len(condition_expressions) > 0:
+                _log.info("rule_type =>" + str(rule_type))
+                _log.info("get_query_dq_rule_tyle_name" + _context.get_query_dq_rule_type_name)
                 if rule_type in [
                     _context.get_query_dq_rule_type_name,
                     _context.get_agg_dq_rule_type_name,
@@ -617,12 +622,23 @@ class SparkExpectationsActions:
                         if rule_type == _context.get_agg_dq_rule_type_name
                         else _context.get_supported_df_query_dq
                     )
+                    _log.info("@@@LOOK IT'S A DATA FRAME@@@")
+                    _context.print_dataframe_with_debugger(df)
+                    _log.info("@@@@@@")
 
                     df = df.select(*condition_expressions)
+
+                    _log.info("^^^LOOK IT'S A DATA FRAME^^^")
+                    _context.print_dataframe_with_debugger(df)
+                    _log.info("^^^")
 
                     df = df.withColumn(
                         f"meta_{rule_type}_results", array(*list(df.columns))
                     )
+
+                    _log.info("&&&LOOK IT'S A DATA FRAME&&&")
+                    _context.print_dataframe_with_debugger(df)
+                    _log.info("&&&")
 
                     df = df.withColumn(
                         f"meta_{rule_type}_results",
