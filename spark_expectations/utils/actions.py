@@ -534,11 +534,11 @@ class SparkExpectationsActions:
                     column = f"{rule_type}_{rule['rule']}"
                     condition_expressions.append(
                         when(expr(rule["expectation"]), map_from_entries(
-                            array_append(SparkExpectationsActions.create_rules_map(rule), struct("status", "pass"))
+                            array_append(SparkExpectationsActions.create_rules_map(rule), struct(lit("status"), lit("pass")))
                         ))
                         .otherwise(
                             map_from_entries(
-                                array_append(SparkExpectationsActions.create_rules_map(rule), struct("status", "fail"))
+                                array_append(SparkExpectationsActions.create_rules_map(rule), struct(lit("status"), lit("fail")))
                             )
                         )
                         .alias(column)
