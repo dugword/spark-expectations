@@ -532,14 +532,20 @@ class SparkExpectationsActions:
                 if _rule_is_active or rule_type == _context.get_row_dq_rule_type_name:
                     column = f"{rule_type}_{rule['rule']}"
                     condition_expressions.append(
-                        when(expr(rule["expectation"]), create_map())
-                        .otherwise(
-                            map_from_entries(
-                                SparkExpectationsActions.create_rules_map(rule)
-                            )
+                        map_from_entries(
+                            SparkExpectationsActions.create_rules_map(rule)
                         )
                         .alias(column)
                     )
+                    #condition_expressions.append(
+                        #when(expr(rule["expectation"]), create_map())
+                        #.otherwise(
+                        #    map_from_entries(
+                        #        SparkExpectationsActions.create_rules_map(rule)
+                        #    )
+                        #)
+                        #.alias(column)
+                    #)
                     if (
                         rule_type
                         in (

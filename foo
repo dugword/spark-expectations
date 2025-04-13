@@ -1,1 +1,23 @@
-test file
+Column<'CASE WHEN between(scalarsubquery(), 0, 1)
+THEN map()
+ELSE map_from_entries(array(struct(rule_type, query_dq),
+struct(rule, expect_id_max_to_be_between_0_1),
+struct(action_if_failed, fail), struct(tag, validity),
+struct(description, expect id max to be between 0 - 1)))
+END AS query_dq_expect_id_max_to_be_between_0_1'>,
+
+Column<'CASE WHEN between(scalarsubquery(), 0, 100)
+THEN map()
+ELSE map_from_entries(array(struct(rule_type, query_dq),
+struct(rule, expect_id_max_to_be_between_0_100),
+struct(action_if_failed, fail), struct(tag, validity),
+struct(description, expect id max to be between 0 - 100)))
+END AS query_dq_expect_id_max_to_be_between_0_100'>,
+
+Column<'CASE WHEN between(scalarsubquery(), 0, 3)
+THEN map()
+ELSE map_from_entries(array(struct(rule_type, query_dq),
+struct(rule, expect_id_max_to_be_between_0_3),
+struct(action_if_failed, fail), struct(tag, validity),
+struct(description, expect id max to be between 0 - 3)))
+END AS query_dq_expect_id_max_to_be_between_0_3'>]

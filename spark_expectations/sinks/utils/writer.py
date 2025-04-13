@@ -502,6 +502,8 @@ class SparkExpectationsWriter:
             "dq_job_metadata_info", lit(self._context.get_job_metadata).cast("string")
         )
 
+        _log.info("I THINK I FOUND IT FOR REALZ")
+        _log.info("THIS =>" + str(_df_detailed_stats))
         return _df_detailed_stats
 
     def write_detailed_stats(self) -> None:
