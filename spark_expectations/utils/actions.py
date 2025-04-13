@@ -460,6 +460,7 @@ class SparkExpectationsActions:
 
 
         """
+        print("THIS IS SOME OUTPUT - LOOK AT ME!")
         try:
             first_row = _df.first()
             if (
