@@ -566,6 +566,10 @@ class SparkExpectationsActions:
                             _source_dq_status=_source_dq_enabled,
                             _target_dq_status=_target_dq_enabled,
                         )
+                        _log.info("DOUG DOUG DOUG")
+                        _log.info("output_list =>" + str(_querydq_output_list))
+                        _log.info("output_tuple =>" + str(_agg_query_dq_output_tuple))
+                        _log.info("GUOD GUOD GUOD")
                         current_date = datetime.now()
                         dq_end_time = datetime.strftime(
                             current_date, "%Y-%m-%d %H:%M:%S"
@@ -580,6 +584,7 @@ class SparkExpectationsActions:
                 and _context.get_agg_dq_detailed_stats_status is True
                 and _source_dq_enabled
             ):
+                _log.info("IN THE CHECK =>" + str(_agg_query_dq_results))
                 _context.set_source_agg_dq_detailed_stats(_agg_query_dq_results)
 
             elif (
