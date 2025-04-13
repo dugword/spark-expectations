@@ -501,6 +501,9 @@ class SparkExpectationsActions:
             DataFrame: Returns a dataframe with all the rules run the input dataframe
 
         """
+        _log.info("!!!PRINTING THE DATAFRAME IN DQ RULES FUNC!!!")
+        _context.print_dataframe_with_debugger(df)
+        _log.info("!!!!!!!!!")
         try:
             condition_expressions: List = []
             _agg_query_dq_results: List = []
